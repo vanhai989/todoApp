@@ -5,14 +5,25 @@ import { COLORS } from '../colors';
 
 const windowWidth = Dimensions.get('window').width;
 
-const TaskItem = ({ item, index }) => {
-  console.log('item', item);
+const TaskItem = (props) => {
+  const { item, index } = props
   const isDoneTask = item.isDone ? IMAGES.ic_checked : IMAGES.ic_uncheck
+
+  const _taskSelected = (task) => {
+    props.updateTask(task)
+  }
+
+  const _deleteTask = (task) => {
+    props.deleteTask(task)
+  }
+
   return (
     <View key={index} style={styles.container}>
-      <Image source={isDoneTask} style={styles.iconCheckTask} />
-      <Text style={item.isDone ? styles.contentDone : styles.content}>{item.content}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => _taskSelected(item)} style={styles.wrapContent}>
+        <Image source={isDoneTask} style={styles.iconCheckTask} />
+        <Text style={item.isDone ? styles.contentDone : styles.content}>{item.content}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => _deleteTask(item)}>
         <Image source={IMAGES.ic_close} style={styles.closeIcon} />
       </TouchableOpacity>
     </View>
@@ -66,5 +77,11 @@ const styles = StyleSheet.create({
     height: 18,
     marginHorizontal: 20,
     tintColor: COLORS.main
+  },
+  wrapContent: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }
 })

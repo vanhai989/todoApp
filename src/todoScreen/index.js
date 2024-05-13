@@ -27,8 +27,18 @@ const TodoList = () => {
     },
   ])
 
+  const _updateTask = (task) => {
+  
+   
+  }
+
+  const _deleteTask = (task) => {
+    const newTasks = tasks.filter(item => item.content !== task.content);
+    setTasks(newTasks)
+  }
+
   const _renderItem = ({item, index}) => {
-    return <TaskItem item={item} index={index} />
+    return <TaskItem item={item} index={index} updateTask={_updateTask} deleteTask={_deleteTask} />
   }
 
   const _updateTodo = (newTodo) => {
