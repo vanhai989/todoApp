@@ -13,7 +13,7 @@ console.log('123456789');
 
   }
   const _createTask = () => {
-    if (task) {
+    if (task.trim()) {
       console.log('Task', task);
       const newTask = {
         isDone: false,
@@ -21,6 +21,11 @@ console.log('123456789');
       }
       props.updateTodo(newTask)
     }
+    _closeModal()
+    setTask('')
+  }
+
+  const _closeModal = () => {
     setModalVisible(false)
   }
   return (
@@ -34,7 +39,7 @@ console.log('123456789');
           animationType="fade"
           transparent={true}
           visible={modalVisible}>
-          <View style={styles.wrapperContent}>
+          <TouchableOpacity onPress={_closeModal} style={styles.wrapperContent}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <View style={styles.wrapHeaderModal}>
@@ -54,7 +59,7 @@ console.log('123456789');
                 </Pressable>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </Modal>
       </View>
     </>

@@ -4,6 +4,7 @@ import Header from '../components/header'
 // import NewTask from './components/newTask'
 import TaskItem from '../components/item'
 import NewTaskInput from '../components/newTaskInput'
+import { COLORS } from '../colors'
 
 
 const TodoList = () => {
@@ -13,7 +14,7 @@ const TodoList = () => {
       content: 'task 1'
     },
     {
-      isDone: false,
+      isDone: true,
       content: 'task 2'
     },
     {
@@ -31,18 +32,23 @@ const TodoList = () => {
   }
 
   const _updateTodo = (newTodo) => {
-    setTasks((currentTasks) => [...currentTasks, newTodo])
+        setTasks((currentTasks) => [...currentTasks, newTodo])
+  }
+
+  const renderListTodo = () => {
+    return <FlatList
+    contentContainerStyle={styles.todoList}
+    data={tasks}
+    renderItem={_renderItem}
+    ItemSeparatorComponent={<View style={styles.itemSeparator} />}
+    keyExtractor={(item, index) => 'todo' + index}
+  />
   }
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <Header />
-      <FlatList
-        contentContainerStyle={styles.todoList}
-        data={tasks}
-        renderItem={_renderItem}
-        keyExtractor={(item, index) => 'todo' + index}
-      />
+      {renderListTodo()}
       <NewTaskInput updateTodo={(newTodo) => _updateTodo(newTodo)} />
     </View>
   )
@@ -51,7 +57,17 @@ const TodoList = () => {
 export default TodoList
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.backgroundColor,
+  },
   todoList: {
-    flex: 1,  alignItems: 'center', backgroundColor: '#fff'
+    flex: 1,
+    alignItems: 'center', 
+    backgroundColor: COLORS.backgroundColor,
+    paddingTop: 20
+  },
+  itemSeparator: {
+    height: 20
   }
 })
