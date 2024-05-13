@@ -1,13 +1,14 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Images } from '../images'
+import { IMAGES } from '../images'
 
 const TaskItem = ({item, index}) => {
-    const isDoneTask = item.isDone ? Images.ic_cheked :Images.ic_uncheck
+  console.log('item', item);
+    const isDoneTask = item.isDone ? IMAGES.ic_cheked :IMAGES.ic_uncheck
   return (
     <View key={index} style={styles.container}>
-    <Image source={isDoneTask} style={styles.iconCheckTask} />
-    <Text>{item.content}</Text>
+      <Image source={isDoneTask} style={styles.iconCheckTask} />
+      <Text style={styles.content}>{item.content}</Text>
   </View>
   )
 }
@@ -21,7 +22,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     iconCheckTask: {
-        width: 15, height: 15, borderRadius: 7.5,
+        width: 20, height: 20, borderRadius: 10,
         marginRight: 20
-    }
+    },
+    content: {
+      color: '#000'
+    },
 })
