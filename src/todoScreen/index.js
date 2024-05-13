@@ -28,8 +28,15 @@ const TodoList = () => {
   ])
 
   const _updateTask = (task) => {
-  
-   
+    const updatedTasks = tasks.map(element => {
+      if(element.content == task.content) {
+        element.isDone = !task.isDone
+      }
+      return element
+    });
+
+    setTasks(updatedTasks)
+    
   }
 
   const _deleteTask = (task) => {
