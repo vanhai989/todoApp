@@ -37,7 +37,10 @@ console.log('123456789');
           <View style={styles.wrapperContent}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <Text style={styles.modalTitle}>Create task</Text>
+                <View style={styles.wrapHeaderModal}>
+                  <Text style={styles.modalTitle}>Create task</Text>
+                  <Image source={IMAGES.ic_document} style={styles.documentIcon} />
+                </View>
                 <TextInput
                   value={task}
                   onChangeText={setTask}
@@ -122,12 +125,21 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     color: COLORS.main,
-    fontSize: 20
+    fontSize: 20,
+    marginRight: 7
   },
   textArea: {
     borderWidth: 0.5,
     width: '100%',
     borderRadius: 10,
     textAlignVertical: 'top',
+  },
+  wrapHeaderModal: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  documentIcon: {
+    width: 20,
+    height: 20,
   }
 })

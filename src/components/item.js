@@ -4,7 +4,7 @@ import { IMAGES } from '../images'
 
 const TaskItem = ({item, index}) => {
   console.log('item', item);
-    const isDoneTask = item.isDone ? IMAGES.ic_cheked :IMAGES.ic_uncheck
+    const isDoneTask = item.isDone ? IMAGES.ic_checked :IMAGES.ic_uncheck
   return (
     <View key={index} style={styles.container}>
       <Image source={isDoneTask} style={styles.iconCheckTask} />
