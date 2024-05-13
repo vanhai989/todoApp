@@ -5,7 +5,7 @@ import { COLORS } from '../colors'
 const Header = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Header</Text>
+      <Text style={styles.title}>Todo App</Text>
     </View>
   )
 }
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        color: '#fff'
+        color: '#fff',
+        fontSize: 25
     }
 })

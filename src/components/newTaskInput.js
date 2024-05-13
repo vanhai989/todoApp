@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
     right: 25
   },
   iconNewTask: {
-    width: 50,
-    height: 50,
-    borderRadius: 25
+    width: 60,
+    height: 60,
+    borderRadius: 30
   },
   wrapperModal: {
     flex: 1,
